@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>DrawInAir</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#a90329">
+	<link rel="stylesheet" type="text/css" href="handgestar_stylesheets/normalize.css" media="screen">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="handgestar_stylesheets/stylesheet.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="handgestar_stylesheets/github-light.css" media="screen">
+	<link rel="shortcut icon" href="handgestar_img/favicon.ico" />
+	<script type="text/javascript" async
+	  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<!-- <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-101653083-3', 'auto');
+		ga('send', 'pageview');
+	</script> -->
+</head>
+
+<body>
+	<section class="page-header">
+		<h1 class="project-name">DrawInAir</h1>
+		<h2 class="project-tagline">Fingertip Gestures for Intelligent User Interface</h2>
+<!-- 		<h2 class="project-authors"><a class = ".a_light" href="https://www.linkedin.com/in/neel-rakholia/"><b>Neel Rakholia\(^*\)</b></a> ,<a href="http://home.iiitd.edu.in/~srinidhi13164/"><b>Srinidhi Hegde\(^*\)</b></a>, <a href="https://scholar.google.co.in/citations?user=IJjnjZIAAAAJ&hl=en"><b>Ramya Hebbalaguppe</b></a></h2> -->
+		<a href="#video1" class="btn">Demo Video</a>
+		<a href="#app1" class="btn">EgoGestAR Dataset</a>
+		<!-- <a href="#video2" class="btn">Demo Video 2</a>
+		<a href="https://github.com/handgestar/EgoGestAR" target="_blank" class="btn">EgoGestAR Dataset and Codebase</a>
+		 <a href="https://github.com/handgestar/HandGestAR" target="_blank" class="btn">Videos Dataset for Testing</a>-->
+	</section>
+
+	<section class="main-content">
+		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Abstract</h3>
+		<p align="justify"> Hand gestures form a natural way of interaction on Head-Mounted Devices (HMDs) and smartphones. HMDs such as HoloLens and ARCore/ARKit platform enabled smartphones are expensive and are equipped with powerful processors and sensors such as multiple cameras, depth and IR sensors to process hand gestures. To enable mass market reach via inexpensive Augmented Reality (AR) headsets without built-in depth or IR sensors, we propose a real-time, in-air gestural framework that works on monocular RGB input, termed, <i> DrawInAir </i>. <i> DrawInAir </i> uses fingertip for writing in air analogous to a pen on paper. The major challenge in training egocentric gesture recognition models is in obtaining sufficient labeled data for end-to-end learning. Thus, we design a cascade of networks, consisting of a CNN with differentiable spatial to numerical transform (DSNT) layer, for fingertip regression, followed by a Bidirectional Long Short-Term Memory (Bi-LSTM), for a real-time pointing hand gesture classification. We highlight how a model, that is separately trained to regress fingertip in conjunction with a classifier trained on limited classification data, would perform better over end-to-end models. We also propose a dataset of 10 egocentric pointing gestures designed for AR applications for testing our model. We show that the framework takes 1.73s to run end-to-end and has a low memory footprint of 14MB while achieving an accuracy of 88.0% on egocentric video dataset. </p>
+
+		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Contribution</h3>
+		<ol>
+			<li> We propose <i> DrawInAir </i>, a neural network architecture, consisting of a base CNN and a DSNT network followed by a Bi-LSTM, for efficient classifiction of user gestures.
+			<li> <i> DrawInAir </i> works in real-time and can be ported on mobile devices due to low memory footprint.
+			<li> <b>EgoGestAR</b>: a dataset of 10 egocentric hand gestures suitable for AR applications.
+		</ol></p>
+
+
+		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Idea</h3>
+		<p><img src="handgestar_img/drawinair_pipeline.png"></p><!-- https://handgestar.github.io/ -->
+		
+		<p align="justify"> In this work, we present a neural network architecture comprising of a base CNN and a <em> differentiable spatial to numerical transform</em> (DSNT) layer followed by a Bidirectional Long Short-Term Memory(Bi-LSTM). The DSNT layer transforms the heatmap from CNN, that is rich in spatial information, to output spatial location of fingertip. The details of the CNN+DSNT network is mentioned in the figure below. The Bi-LSTM effectively captures the dynamic motion of user gesture that aids in classification.
+			<!-- $$\begin{equation}
+			\begin{aligned}
+			& \underset{(X,Y)}{\text{minimize}}
+			& S((X,Y)) + \lambda d((X,Y); (X_p, Y_p)) \\
+			& \text{subject to}
+			& X \leq F_w - O_w, \quad X \geq 0\\
+			& & Y \leq F_h - O_h, \quad Y \geq 0
+			\end{aligned}
+			\end{equation}$$ -->
+		</p>
+
+		<p><img src="handgestar_img/fcn_dsnt.png"></p>
+
+		<p>Figure above shows the overview of our proposed <em>fingertip regressor</em> architecture for fingertip localization. The input to the network is  3x256x256 sized RGB images. The network consists of 6 convolutional blocks, each with different convolutional layers followed by a max-pooling layer. Then we have a convolutional layer to output a heatmap which is input to DSNT. Finally, we get 2 coordinates denoting fingertip spatial location.</p>
+
+
+		<!-- <h3><a id="authors" class="anchor" href="#authors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Authors</h3>
+		<div class="authors-wrapper">
+			<div class="authors-item">
+				<a href="https://www.linkedin.com//"" target="_blank"><div class="circle"><img src="" width="140" height="140"/></div></a>
+				<p></p>
+			</div>
+			<div class="authors-item">
+				<a href="https://www.linkedin.com//" target="_blank"><div class="circle"><img src="" width="140" height="140"/></div></a>
+				<p></p>
+			</div>
+			<div class="authors-item">
+				<a href="https://www.linkedin.com//" target="_blank"><div class="circle"><img src="" width="140" height="140"/></div></a>
+				<p></p>
+			</div>
+		</div> -->
+
+		<!-- <h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video: 1</h3>
+		<video src="https://handgestar.github.io/handgestar_img/demo_video_0_watermark.mp4" align='center' width="100%" height="100%" controls preload></video>
+		
+		<h3><a id="video2" class="anchor" href="#video2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video: 2</h3>
+		<video src="https://handgestar.github.io/handgestar_img/demo_video_1_watermark.mp4" align='center' width="100%" height="100%" controls preload></video> -->
+
+		<h3><a id="app1" class="anchor" href="#app1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EgoGestAR Dataset</h3>
+
+		<p><img src="handgestar_img/dataset.png"></p>
+
+		<p>We collected the data from 50 subjects in our research lab with ages in the range 21 to 50 with average age 27.8 years. The dataset consists of 2500 gesture patterns where each subject recorded 5 samples of each gesture. The gestures were recorded by mounting a 10.1 inch display HP Pro Tablet to a wall. The gesture pattern drawn by a user's index finger on a touch interface application with position sensing region was stored. The data was captured at a resolution of 640 x 480. Figure above describes the standard input sequences shown to the users before data collection and a sample subset of gestures from the dataset showing the variability introduced by the subjects. Statistics of the EgoGestAR dataset is shown below. The dataset is available <a href="https://github.com/ILab-AR/EgoGestAR">here</a>.</p>
+
+		<p><img src="handgestar_img/table_data.png"></p>
+
+		<p align="justify"></p>
+
+
+		<!-- Video for project -->
+		<h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video</h3>
+		<div class="video-responsive">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/nGYor0bGXdc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		</div>
+	</section>
+
+</body>
+</html>
