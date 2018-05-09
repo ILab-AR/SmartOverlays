@@ -29,10 +29,7 @@
 		<h2 class="project-tagline">Fingertip Gestures for Intelligent User Interface</h2>
 <!-- 		<h2 class="project-authors"><a class = ".a_light" href="https://www.linkedin.com/in/neel-rakholia/"><b>Neel Rakholia\(^*\)</b></a> ,<a href="http://home.iiitd.edu.in/~srinidhi13164/"><b>Srinidhi Hegde\(^*\)</b></a>, <a href="https://scholar.google.co.in/citations?user=IJjnjZIAAAAJ&hl=en"><b>Ramya Hebbalaguppe</b></a></h2> -->
 		<a href="#video1" class="btn">Demo Video</a>
-<<<<<<< HEAD
 		<a href="#app1" class="btn">EgoGestAR Dataset</a>
-=======
->>>>>>> ecc773d6c4e916d6f1ca8bebf2cb303d59fec2eb
 		<!-- <a href="#video2" class="btn">Demo Video 2</a>
 		<a href="https://github.com/handgestar/EgoGestAR" target="_blank" class="btn">EgoGestAR Dataset and Codebase</a>
 		 <a href="https://github.com/handgestar/HandGestAR" target="_blank" class="btn">Videos Dataset for Testing</a>-->
@@ -40,7 +37,6 @@
 
 	<section class="main-content">
 		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Abstract</h3>
-<<<<<<< HEAD
 		<p align="justify"> Hand gestures form a natural way of interaction on Head-Mounted Devices (HMDs) and smartphones. HMDs such as HoloLens and ARCore/ARKit platform enabled smartphones are expensive and are equipped with powerful processors and sensors such as multiple cameras, depth and IR sensors to process hand gestures. To enable mass market reach via inexpensive Augmented Reality (AR) headsets without built-in depth or IR sensors, we propose a real-time, in-air gestural framework that works on monocular RGB input, termed, <i> DrawInAir </i>. <i> DrawInAir </i> uses fingertip for writing in air analogous to a pen on paper. The major challenge in training egocentric gesture recognition models is in obtaining sufficient labeled data for end-to-end learning. Thus, we design a cascade of networks, consisting of a CNN with differentiable spatial to numerical transform (DSNT) layer, for fingertip regression, followed by a Bidirectional Long Short-Term Memory (Bi-LSTM), for a real-time pointing hand gesture classification. We highlight how a model, that is separately trained to regress fingertip in conjunction with a classifier trained on limited classification data, would perform better over end-to-end models. We also propose a dataset of 10 egocentric pointing gestures designed for AR applications for testing our model. We show that the framework takes 1.73s to run end-to-end and has a low memory footprint of 14MB while achieving an accuracy of 88.0% on egocentric video dataset. </p>
 
 		<p><img src="handgestar_img/showimg.png"></p>
@@ -50,74 +46,20 @@
 			<li> We propose <i> DrawInAir </i>, a neural network architecture, consisting of a base CNN and a DSNT network followed by a Bi-LSTM, for efficient classifiction of user gestures.
 			<li> <i> DrawInAir </i> works in real-time and can be ported on mobile devices due to low memory footprint.
 			<li> <b>EgoGestAR</b>: a dataset of 10 egocentric hand gestures suitable for AR applications.
-=======
-		<p align="justify"> Textual overlays/labels add contextual information in Augmented Reality (AR) applications. The spatial placement of labels is a challenging task due to constraints that (i) labels should not occlude the object/scene of interest, and, (ii) are optimally placed for better interpretation of scene. To this end, we present a novel method for optimal placement of labels for AR. We formulate this method by an objective function that minimizes both occlusion with visually salient regions in scenes of interest, and the temporal jitter for facilitating coherence in real-time AR applications. The main focus of proposed algorithm is real-time label placement on low-end android phones/tablets. The sophisticated  state-of-the-art algorithms for optimal positioning of textual label work only on the images and often inefficient for real-time performance on those devices. We demonstrate the efficiency of our method by porting the algorithm on a smart-phone/tablet. Further, we capture objective and subjective metrics to determine the efficacy of the method; objective metrics include computation time taken for determining the label location and Label Occlusion over Saliency (LOS) score over salient regions in the scene. Subjective metrics include position, temporal coherence in the overlay, color and responsiveness. </p>
-
-		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Contribution</h3>
-		<ol>
-			<li> We present a label placement algorithm that works in real-time, on low-end android devices such as a smartphone and a tablet.
-			<li> Label placement is formulated as an objective function parameterised by image saliency and temporal jitter.
-			<li> We introduce a new evaluation metric, Saliency Occlusion score, for measuring the effectiveness of overlay placement.
->>>>>>> ecc773d6c4e916d6f1ca8bebf2cb303d59fec2eb
-		</ol></p>
-
+		</ol>
 
 		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Idea</h3>
-<<<<<<< HEAD
+
 		<p><img src="handgestar_img/drawinair_pipeline.png"></p><!-- https://handgestar.github.io/ -->
 		
 		<p align="justify"> In this work, we present a neural network architecture comprising of a base CNN and a <em> differentiable spatial to numerical transform</em> (DSNT) layer followed by a Bidirectional Long Short-Term Memory(Bi-LSTM). The DSNT layer transforms the heatmap from CNN, that is rich in spatial information, to output spatial location of fingertip. The details of the CNN+DSNT network is mentioned in the figure below. The Bi-LSTM effectively captures the dynamic motion of user gesture that aids in classification.
 			<!-- $$\begin{equation}
-=======
-		<p><img src="handgestar_img/pipeline.png"></p><!-- https://handgestar.github.io/ -->
+		<p><img src="handgestar_img/pipeline.png"></p> https://handgestar.github.io/ -->
 		
-		<p align="justify"> RGB video stream in real-time is the input for our algorithm. We compute the saliency map of the incoming video frames using method proposed by <a href="http://ieeexplore.ieee.org/document/5206596/"><i>Achanta et al</i></a>. It then iterates through the pixel values provided in the search space and sums up the saliency values given by the map in a hypothetical box of size \(O_h , O_w\). The pixel value with the lowest sum is picked as the ideal candidate suggesting lowest salience. The overlay is shifted if the Euclidean distance, \(d\), between the previous position and the current position scaled by \(λ\), jitter parameter, is as low as possible. To combine the constraints posed by both low saliency and temporal jitter we formulate an optimization problem, as follows:
-			$$\begin{equation}
->>>>>>> ecc773d6c4e916d6f1ca8bebf2cb303d59fec2eb
-			\begin{aligned}
-			& \underset{(X,Y)}{\text{minimize}}
-			& S((X,Y)) + \lambda d((X,Y); (X_p, Y_p)) \\
-			& \text{subject to}
-			& X \leq F_w - O_w, \quad X \geq 0\\
-			& & Y \leq F_h - O_h, \quad Y \geq 0
-			\end{aligned}
-<<<<<<< HEAD
-			\end{equation}$$ -->
-		</p>
-
 		<p><img src="handgestar_img/fcn_dsnt.png"></p>
 
 		<p>Figure above shows the overview of our proposed <em>fingertip regressor</em> architecture for fingertip localization. The input to the network is  3x256x256 sized RGB images. The network consists of 6 convolutional blocks, each with different convolutional layers followed by a max-pooling layer. Then we have a convolutional layer to output a heatmap which is input to DSNT. Finally, we get 2 coordinates denoting fingertip spatial location.</p>
 
-=======
-			\end{equation}$$
-		</p>
-
->>>>>>> ecc773d6c4e916d6f1ca8bebf2cb303d59fec2eb
-
-		<!-- <h3><a id="authors" class="anchor" href="#authors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Authors</h3>
-		<div class="authors-wrapper">
-			<div class="authors-item">
-				<a href="https://www.linkedin.com//"" target="_blank"><div class="circle"><img src="" width="140" height="140"/></div></a>
-				<p></p>
-			</div>
-			<div class="authors-item">
-				<a href="https://www.linkedin.com//" target="_blank"><div class="circle"><img src="" width="140" height="140"/></div></a>
-				<p></p>
-			</div>
-			<div class="authors-item">
-				<a href="https://www.linkedin.com//" target="_blank"><div class="circle"><img src="" width="140" height="140"/></div></a>
-				<p></p>
-			</div>
-		</div> -->
-
-		<!-- <h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video: 1</h3>
-		<video src="https://handgestar.github.io/handgestar_img/demo_video_0_watermark.mp4" align='center' width="100%" height="100%" controls preload></video>
-		
-		<h3><a id="video2" class="anchor" href="#video2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video: 2</h3>
-		<video src="https://handgestar.github.io/handgestar_img/demo_video_1_watermark.mp4" align='center' width="100%" height="100%" controls preload></video> -->
-
-<<<<<<< HEAD
 		<h3><a id="app1" class="anchor" href="#app1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EgoGestAR Dataset</h3>
 
 		<p><img src="handgestar_img/dataset.png"></p>
@@ -133,18 +75,6 @@
 		<h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video</h3>
 		<div class="video-responsive">
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/nGYor0bGXdc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-=======
-		<h3><a id="app1" class="anchor" href="#app1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Application</h3>
-
-		<p><img src="handgestar_img/high-level-flow.png"></p>
-
-		<p align="justify">We have a developed an application to test our hypothesis. At a high level, the live feed captured from a tablet (or a handheld mobile device) is sent to our algorithm that runs on device for overlaying contextual labels for a scene, which aids in better interpretation of the scene.</p>
-		<p>The application is available on request.</p>
-
-		<h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video</h3>
-		<div class="video-responsive">
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/ab0nm4pL3b8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
->>>>>>> ecc773d6c4e916d6f1ca8bebf2cb303d59fec2eb
 		</div>
 	</section>
 
