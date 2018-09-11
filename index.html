@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
 	<meta charset="UTF-8">
-	<title>DrawInAir</title>
+	<title>SmartOverlays</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#a90329">
 	<link rel="stylesheet" type="text/css" href="handgestar_stylesheets/normalize.css" media="screen">
@@ -25,52 +25,39 @@
 
 <body>
 	<section class="page-header">
-		<h1 class="project-name">DrawInAir</h1>
-		<h2 class="project-tagline">A Lightweight Gestural Interface Based on Fingertip Regression</h2>
+		<h1 class="project-name">SmartOverlays</h1>
+		<h2 class="project-tagline">A Visual Saliency Driven Label Placement for Intelligent Human-Computer Interfaces</h2>
 <!-- 		<h2 class="project-authors"><a class = ".a_light" href="https://www.linkedin.com/in/neel-rakholia/"><b>Neel Rakholia\(^*\)</b></a> ,<a href="http://home.iiitd.edu.in/~srinidhi13164/"><b>Srinidhi Hegde\(^*\)</b></a>, <a href="https://scholar.google.co.in/citations?user=IJjnjZIAAAAJ&hl=en"><b>Ramya Hebbalaguppe</b></a></h2> -->
 		<a href="#video1" class="btn">Demo Video</a>
-		<a href="#app1" class="btn">EgoGestAR Dataset</a>
-		<a href="#poster" class="btn">Poster</a>
-		<!-- <a href="#video2" class="btn">Demo Video 2</a>
-		<a href="https://github.com/handgestar/EgoGestAR" target="_blank" class="btn">EgoGestAR Dataset and Codebase</a>
-		 <a href="https://github.com/handgestar/HandGestAR" target="_blank" class="btn">Videos Dataset for Testing</a>-->
+		<!-- <a href="#app1" class="btn">EgoGestAR Dataset</a> -->
+		<!-- <a href="#poster" class="btn">Poster</a> -->
+		<!-- <a href="https://github.com/handgestar/EgoGestAR" target="_blank" class="btn">EgoGestAR Dataset and Codebase</a>
+		<a href="https://github.com/handgestar/HandGestAR" target="_blank" class="btn">Videos Dataset for Testing</a> -->
 	</section>
 
 	<section class="main-content">
 		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Abstract</h3>
-		<p align="justify"> Hand gestures form a natural way of interaction on Head-Mounted Devices (HMDs) and smartphones. HMDs such as HoloLens and ARCore/ARKit platform enabled smartphones are expensive and are equipped with powerful processors and sensors such as multiple cameras, depth and IR sensors to process hand gestures. To enable mass market reach via inexpensive Augmented Reality (AR) headsets without built-in depth or IR sensors, we propose a real-time, in-air gestural framework that works on monocular RGB input, termed, <i> DrawInAir </i>. <i> DrawInAir </i> uses fingertip for writing in air analogous to a pen on paper. The major challenge in training egocentric gesture recognition models is in obtaining sufficient labeled data for end-to-end learning. Thus, we design a cascade of networks, consisting of a CNN with differentiable spatial to numerical transform (DSNT) layer, for fingertip regression, followed by a Bidirectional Long Short-Term Memory (Bi-LSTM), for a real-time pointing hand gesture classification. We highlight how a model, that is separately trained to regress fingertip in conjunction with a classifier trained on limited classification data, would perform better over end-to-end models. We also propose a dataset of 10 egocentric pointing gestures designed for AR applications for testing our model. We show that the framework takes 1.73s to run end-to-end and has a low memory footprint of 14MB while achieving an accuracy of 88.0% on egocentric video dataset. </p>
+		<p align="justify"> Computer generated labels in augmented reality applications and user interfaces assist in understanding a scene better by adding contextual information. However, naive label placement often results in clutter and occlusion, impairing the effectiveness of AR visualization. Therefore, the labels ideally should (i) not occlude the object/scene of interest, (ii) be optimally placed close to the object for better interpretation of scene, and (iii) obey the rules of aesthetics. This makes spatial placement of labels a challenging task. To this end, we present a novel method for optimal placement of multiple labels corresponding to different objects of interest in a video. Our proposed framework, SmartOverlays, identifies the objects and generates corresponding labels using a YOLOv2 in a video frame. We exploit visual saliency for placing the labels for satisfying aforementioned constraints by generating saliency maps from a Saliency Attention Model (SAM) that learns eye fixation points. Finally, we place the labels corresponding to detected objects in the decreasing order of object's saliency which we decide by observing the salient regions occupied by the object in a video frame. We compute Voronoi partitions of the video frame, choosing the centroids of objects as seed points, to place labels for satisfying the proximity constraints with object of interest. We use an adaptive color scheme for label text color contrasting from the background texture. In order to measure the effectiveness of SmartOverlays framework, we introduce a new evaluation metric, which we term as the Label Occlusion over Saliency (LOS) score, in addition to reporting the computation time. We subjectively evaluate our framework with metrics from user studies that include position, temporal coherence in the overlay, adaptive color contrast, and readability. </p>
 
-		<p><img src="handgestar_img/showimg.png"></p>
+		<p><img src="handgestar_img/show_cluttered.png"></p>
 
 		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Contribution</h3>
 		<ol>
-			<li> We propose <i> DrawInAir </i>, a neural network architecture, consisting of a base CNN and a DSNT network followed by a Bi-LSTM, for efficient classifiction of user gestures.
-			<li> <i> DrawInAir </i> works in real-time and can be ported on mobile devices due to low memory footprint.
-			<li> <b>EgoGestAR</b>: a dataset of 10 egocentric hand gestures suitable for AR applications.
+			<li> We propose a novel method that places multiple labels with unconstrained geometry on video frames and live feed. This comprises of a <b>Saliency Attention Model (SAM)</b> for computing visual saliency, an object detector such as <b>YOLOv2</b>, followed by the use of Voronoi partitioning to avoid label/leadline overlap and  simple adaptive color schemes for overlays in dynamic backgrounds.
+			<li> We introduce a new evaluation metric, <b>Label Occlusion over Saliency score (LOS)</b>, for measuring the effectiveness of overlay placement.
 		</ol>
 
 		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Idea</h3>
 
-		<p><img src="handgestar_img/drawinair_pipeline.png"></p><!-- https://handgestar.github.io/ -->
+		<p><img src="handgestar_img/ijcai_pipeline.png"></p><!-- https://handgestar.github.io/ -->
 		
-		<p align="justify"> In this work, we present a neural network architecture comprising of a base CNN and a <em> differentiable spatial to numerical transform</em> (DSNT) layer followed by a Bidirectional Long Short-Term Memory(Bi-LSTM). The DSNT layer transforms the heatmap from CNN, that is rich in spatial information, to output spatial location of fingertip. The details of the CNN+DSNT network is mentioned in the figure below. The Bi-LSTM effectively captures the dynamic motion of user gesture that aids in classification.
+		<!-- <p align="justify"> In this work, we present a neural network architecture comprising of a base CNN and a <em> differentiable spatial to numerical transform</em> (DSNT) layer followed by a Bidirectional Long Short-Term Memory(Bi-LSTM). The DSNT layer transforms the heatmap from CNN, that is rich in spatial information, to output spatial location of fingertip. The details of the CNN+DSNT network is mentioned in the figure below. The Bi-LSTM effectively captures the dynamic motion of user gesture that aids in classification. -->
 			<!-- $$\begin{equation}
 		<p><img src="handgestar_img/pipeline.png"></p> https://handgestar.github.io/ -->
-		
-		<p><img src="handgestar_img/fcn_dsnt.png"></p>
-
-		<p>Figure above shows the overview of our proposed <em>fingertip regressor</em> architecture for fingertip localization. The input to the network is  3x256x256 sized RGB images. The network consists of 6 convolutional blocks, each with different convolutional layers followed by a max-pooling layer. Then we have a convolutional layer to output a heatmap which is input to DSNT. Finally, we get 2 coordinates denoting fingertip spatial location.</p>
-
-		<h3><a id="app1" class="anchor" href="#app1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EgoGestAR Dataset</h3>
-
-		<p><img src="handgestar_img/dataset.png"></p>
-
-		<p>We collected the data from 50 subjects in our research lab with ages in the range 21 to 50 with average age 27.8 years. The dataset consists of 2500 gesture patterns where each subject recorded 5 samples of each gesture. The gestures were recorded by mounting a 10.1 inch display HP Pro Tablet to a wall. The gesture pattern drawn by a user's index finger on a touch interface application with position sensing region was stored. The data was captured at a resolution of 640 x 480. Figure above describes the standard input sequences shown to the users before data collection and a sample subset of gestures from the dataset showing the variability introduced by the subjects. Statistics of the EgoGestAR dataset is shown below. The dataset is available <a href="https://github.com/varunj/EgoGestAR">here</a>.</p>
-
-		<p><img src="handgestar_img/table_data.png"></p>
 
 		<p align="justify"></p>
 
+		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
 
 		<!-- Video for project -->
 		<h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video</h3>
@@ -78,9 +65,9 @@
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/nGYor0bGXdc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 		</div>
 
-		<h3><a id="poster" class="anchor" href="#poster" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Poster</h3>
+		<!-- <h3><a id="poster" class="anchor" href="#poster" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Poster</h3>
 
-		<p><img src="handgestar_img/poster.png"></p>
+		<p><img src="handgestar_img/poster.png"></p> -->
 
 
 	</section>
