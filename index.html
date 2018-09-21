@@ -51,13 +51,15 @@
 
 		<p><img src="handgestar_img/ijcai_pipeline.png"></p><!-- https://handgestar.github.io/ -->
 		
-		<!-- <p align="justify"> In this work, we present a neural network architecture comprising of a base CNN and a <em> differentiable spatial to numerical transform</em> (DSNT) layer followed by a Bidirectional Long Short-Term Memory(Bi-LSTM). The DSNT layer transforms the heatmap from CNN, that is rich in spatial information, to output spatial location of fingertip. The details of the CNN+DSNT network is mentioned in the figure below. The Bi-LSTM effectively captures the dynamic motion of user gesture that aids in classification. -->
+		<p align="justify"> We take video frames as input to our pipeline which we pass to object detector and label generator module and SAM for saliency estimation. The object detector and label generator produce bounding box for all the detected objects along with their respective class labels. Thus it also creates object-label correspondences. SAM computes the saliency maps for each of the video frames. In the final module, we compute the overlay position for each label in a frame based on the object-label correspondences, saliency maps and placement objectives.
 			<!-- $$\begin{equation}
 		<p><img src="handgestar_img/pipeline.png"></p> https://handgestar.github.io/ -->
 
 		<p align="justify"></p>
 
 		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
+
+		<p><img src="handgestar_img/results_yolo.png"></p>
 
 		<!-- Video for project -->
 		<h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video</h3>
