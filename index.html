@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>SmartOverlays</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#a90329">
+	<link rel="stylesheet" type="text/css" href="handgestar_stylesheets/normalize.css" media="screen">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="handgestar_stylesheets/stylesheet.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="handgestar_stylesheets/github-light.css" media="screen">
+	<link rel="shortcut icon" href="handgestar_img/favicon.ico" />
+	<script type="text/javascript" async
+	  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<!-- <script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-101653083-3', 'auto');
+		ga('send', 'pageview');
+	</script> -->
+</head>
+
+<body>
+	<section class="page-header">
+		<h1 class="project-name">SmartOverlays</h1>
+		<h2 class="project-tagline">A Visual Saliency Driven Label Placement for Intelligent Human-Computer Interfaces</h2>
+<!-- 		<h2 class="project-authors"><a class = ".a_light" href="https://www.linkedin.com/in/neel-rakholia/"><b>Neel Rakholia\(^*\)</b></a> ,<a href="http://home.iiitd.edu.in/~srinidhi13164/"><b>Srinidhi Hegde\(^*\)</b></a>, <a href="https://scholar.google.co.in/citations?user=IJjnjZIAAAAJ&hl=en"><b>Ramya Hebbalaguppe</b></a></h2> -->
+		<a href="#video1" class="btn">Demo Video</a>
+		<!-- <a href="#app1" class="btn">EgoGestAR Dataset</a> -->
+		<!-- <a href="#poster" class="btn">Poster</a> -->
+		<!-- <a href="https://github.com/handgestar/EgoGestAR" target="_blank" class="btn">EgoGestAR Dataset and Codebase</a>
+		<a href="https://github.com/handgestar/HandGestAR" target="_blank" class="btn">Videos Dataset for Testing</a> -->
+	</section>
+
+	<section class="main-content">
+		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Abstract</h3>
+		<p align="justify"> Computer generated labels in augmented reality applications and user interfaces assist in understanding a scene better by adding contextual information. However, naive label placement often results in clutter and occlusion, impairing the effectiveness of AR visualization. Therefore, the labels ideally should (i) not occlude the object/scene of interest, (ii) be optimally placed close to the object for better interpretation of scene, and (iii) obey the rules of aesthetics. This makes spatial placement of labels a challenging task. To this end, we present a novel method for optimal placement of multiple labels corresponding to different objects of interest in a video. Our proposed framework, SmartOverlays, identifies the objects and generates corresponding labels using a YOLOv2 in a video frame. We exploit visual saliency for placing the labels for satisfying aforementioned constraints by generating saliency maps from a Saliency Attention Model (SAM) that learns eye fixation points. Finally, we place the labels corresponding to detected objects in the decreasing order of object's saliency which we decide by observing the salient regions occupied by the object in a video frame. We compute Voronoi partitions of the video frame, choosing the centroids of objects as seed points, to place labels for satisfying the proximity constraints with object of interest. We use an adaptive color scheme for label text color contrasting from the background texture. In order to measure the effectiveness of SmartOverlays framework, we introduce a new evaluation metric, which we term as the Label Occlusion over Saliency (LOS) score, in addition to reporting the computation time. We subjectively evaluate our framework with metrics from user studies that include position, temporal coherence in the overlay, adaptive color contrast, and readability. </p>
+
+		<p><img src="handgestar_img/show_cluttered.png"></p>
+
+		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Contribution</h3>
+		<ol>
+			<li> We propose a novel method that places multiple labels with unconstrained geometry on video frames and live feed. This comprises of a <b>Saliency Attention Model (SAM)</b> for computing visual saliency, an object detector such as <b>YOLOv2</b>, followed by the use of Voronoi partitioning to avoid label/leadline overlap and  simple adaptive color schemes for overlays in dynamic backgrounds.
+			<li> We introduce a new evaluation metric, <b>Label Occlusion over Saliency score (LOS)</b>, for measuring the effectiveness of overlay placement.
+		</ol>
+
+		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Idea</h3>
+
+		<p><img src="handgestar_img/ijcai_pipeline.png"></p><!-- https://handgestar.github.io/ -->
+		
+		<p align="justify"> We take video frames as input to our pipeline which we pass to object detector and label generator module and SAM for saliency estimation. The object detector and label generator produce bounding box for all the detected objects along with their respective class labels. Thus it also creates object-label correspondences. SAM computes the saliency maps for each of the video frames. In the final module, we compute the overlay position for each label in a frame based on the object-label correspondences, saliency maps and placement objectives.
+			<!-- $$\begin{equation}
+		<p><img src="handgestar_img/pipeline.png"></p> https://handgestar.github.io/ -->
+
+		<p align="justify"></p>
+
+		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
+
+		<p><img src="handgestar_img/results_yolo.png"></p>
+
+		<!-- Video for project -->
+		<h3><a id="video1" class="anchor" href="#video1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Video</h3>
+		<div class="video-responsive">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/5Lmwrgzp1ak" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		</div>
+
+		<!-- <h3><a id="poster" class="anchor" href="#poster" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Poster</h3>
+
+		<p><img src="handgestar_img/poster.png"></p> -->
+
+
+	</section>
+
+</body>
+</html>
