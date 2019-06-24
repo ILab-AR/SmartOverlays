@@ -44,8 +44,9 @@
 
 		<h3><a id="welcome-to-handgestar" class="anchor" href="#welcome-to-handgestar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Contribution</h3>
 		<ol>
-			<li> We propose a novel method that places multiple labels with unconstrained geometry on video frames and live feed. This comprises of a <b>Saliency Attention Model (SAM)</b> for computing visual saliency, an object detector such as <b>YOLOv2</b>, followed by the use of Voronoi partitioning to avoid label/leadline overlap and  simple adaptive color schemes for overlays in dynamic backgrounds.
-			<li> We introduce a new evaluation metric, <b>Label Occlusion over Saliency score (LOS)</b>, for measuring the effectiveness of overlay placement.
+			<li> We propose SmartOverlays, a multi-label placement framework on video frames/live feed. This method comprises of a Saliency Attention Model for computing visual saliency, a real-time object detector such as YOLOv2, followed by our novel label placement module. The label placement module utilizes Voronoi partitioning to avoid label/lead-line overlap and adaptive color scheme to facilitate contrastive label color for dynamic backgrounds.
+			<li> We introduce object tracking based methods on detected objects to place labels in a temporally coherent fashion. To evaluate the effectiveness of label placement, we introduce a temporal jitter metric.
+			<li> We introduce a metric, Label Occlusion over Saliency score (LOS), for measuring the effectiveness of overlay placement as there are no metrics to evaluate label occlusion.
 		</ol>
 
 		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Idea</h3>
