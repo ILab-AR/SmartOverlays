@@ -29,6 +29,7 @@
 		<h2 class="project-tagline">A Visual Saliency Driven Label Placement for Intelligent Human-Computer Interfaces</h2>
 <!-- 		<h2 class="project-authors"><a class = ".a_light" href="https://www.linkedin.com/in/neel-rakholia/"><b>Neel Rakholia\(^*\)</b></a> ,<a href="http://home.iiitd.edu.in/~srinidhi13164/"><b>Srinidhi Hegde\(^*\)</b></a>, <a href="https://scholar.google.co.in/citations?user=IJjnjZIAAAAJ&hl=en"><b>Ramya Hebbalaguppe</b></a></h2> -->
 		<a href="#video1" class="btn">Demo Video</a>
+		<a href="#user-study" class="btn">User Evaluation</a>
 		<!-- <a href="#app1" class="btn">EgoGestAR Dataset</a> -->
 		<!-- <a href="#poster" class="btn">Poster</a> -->
 		<!-- <a href="https://github.com/handgestar/EgoGestAR" target="_blank" class="btn">EgoGestAR Dataset and Codebase</a>
@@ -57,7 +58,29 @@
 
 		<p align="justify"></p>
 
-		<h3><a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
+		<h3><a id="user-study" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User Evaluation</h3>
+		
+		<p align="justify"> The objective of user experiments was to find if our algorithm allowed human users to read the the textual labels best and to explore the shortcomings experienced by the subjects. User studies aid in new directions and extensions to our work based on comments. We recruited 21 subjects – 9, 4, 5, 3 subjects in the age group (A-20 − 25), (B - 26 − 30),(C 30 − 35), (D > 35) respectively. We had 13 male and 8 female human evaluators to test the algorithm in a research lab setting. Experiments involved the subjects to view 20 recorded videos,with different video resolutions, from the DIEM dataset which contained labels placed using SmartOverlays. This datasets consisted of varieties of videos from different genres of advertisements, trailers , tv-series with scenes varying from nature to animated cartoons. Also with eye movements, this dataset provides detailed eye-fixation saliency annotations. The users were tasked to rate the following label placement objectives for each video on a Likert rating scale ranging from 1 − 5, 5 being the highest rating.
+			<!-- $$\begin{equation}
+		<p><img src="handgestar_img/pipeline.png"></p> https://handgestar.github.io/ -->
+
+		<p align="justify"> The label placement objectives and the subjective metrics for user evaluation are listed below:
+		<ol>
+			<li> <b>Occlusion Avoidance</b>: Does the label cover/overlap with the regions of interest? Here, a rating of 5 means no occlusion with the salient regions of the videos.
+			<li> <b>Proximity</b>: Is the label placed close to the corresponding object? A rating of 5 corresponds to the label being very close to the object of interest.
+			<li> <b>Temporal Coherence</b>: Are the labels jittery or jumpy? A rating of 5 means seamless transitions of labels in videos.
+			<li> <b>Readability</b>: Is the label readable in every frame ? A rating of 5 corresponds to the highest ease with which one can read especially the color of overlay box and text.
+			<li> <b>Color Scheme</b>: Does the label font color stand out with respect to the background? Here 5 means contrast between label and background is high and the algorithm used is adaptive in nature.
+			<li> <b>Clarity</b>: Do the connectors or the leader lines intersect? Answers could be Yes/No only.
+		</ol>
+
+		<p align="justify"> The following graph shows the user ratings for different subjective metrics.
+
+		<p><img src="handgestar_img/chart.png"></p><!-- https://handgestar.github.io/ -->
+
+		<p align="justify"></p>
+
+		<h3><a id="results" class="anchor" href="#the-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
 
 		<p><img src="handgestar_img/results_yolo.png"></p>
 
